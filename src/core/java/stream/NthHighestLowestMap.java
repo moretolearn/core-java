@@ -27,15 +27,17 @@ public class NthHighestLowestMap {
 				.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByKey())).map(Map.Entry::getKey)
 				.collect(Collectors.toList()).get(0);
 		System.err.println(entry3);
-		
-	  List<Entry<String, List<String>>> collect = map.entrySet().stream()
+
+		List<Entry<String, List<String>>> collect = map.entrySet().stream()
 				.collect(Collectors.groupingBy(Map.Entry::getKey,
-						Collectors.mapping(Map.Entry::getValue, Collectors.toList()))).entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
+						Collectors.mapping(Map.Entry::getValue, Collectors.toList())))
+				.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
 				.collect(Collectors.toList());
-				
+
 		System.err.println(collect);
-		
-		List<Entry<String, String>> collect2 = map.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByKey())).collect(Collectors.toList());
+
+		List<Entry<String, String>> collect2 = map.entrySet().stream()
+				.sorted(Collections.reverseOrder(Map.Entry.comparingByKey())).collect(Collectors.toList());
 		System.err.println(collect2);
 	}
 }

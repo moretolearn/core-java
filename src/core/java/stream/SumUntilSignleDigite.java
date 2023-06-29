@@ -59,5 +59,7 @@ public class SumUntilSignleDigite {
 		
 		System.out.println(collect2);
 		
+		IntStream.range(1, 10).skip(1).limit(5).forEach(System.out::println);
+		
 	}
 }
