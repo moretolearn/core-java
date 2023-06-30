@@ -1,8 +1,14 @@
 package core.java.stream;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class EmployeeOperations {
 
@@ -11,7 +17,7 @@ public class EmployeeOperations {
 //		List<Employee> m2 = new ArrayList<>();
 //		List<Employee> m3 = new ArrayList<>();
 //		Map<Manager, List<Employee>> hashMap = new HashMap<>();
-//		Map<Manager, List<Employee>> data = EmployeeSData.getData();
+		Map<Manager, List<Employee>> data = EmployeeSData.getData();
 //		
 //		List<Employee> collect = data.entrySet().stream().map(Map.Entry::getValue).map(n -> n.get(0))
 //				.filter(n -> n.getSalary() < 10000).collect(Collectors.toList());
@@ -56,6 +62,40 @@ public class EmployeeOperations {
 		String string3 = list.stream()
 				.sorted(Comparator.comparing(Student::getMarks).reversed()).map(Student::getName).skip(1).findFirst().get();
 		System.err.println(string3);
+		
+		//-------------------------------------------------------
+		
+		data.entrySet().stream().sorted(Map.Entry.comparingByKey(Comparator.comparing(Manager::getTitle).reversed())).forEach(System.out::println);
+		 
+
+		HashMap<Integer, String> hashMap = new HashMap<Integer,String>();
+		hashMap.put(10, "a");
+		hashMap.put(20, "b");
+		hashMap.put(30, "c");
+		
+		List<String> collect = hashMap.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList());
+		System.out.println(collect);
+		
+		Map<Student,Integer> map = new HashMap<>();
+	    Student s1=new Student(1,"A",2);
+	    Student s2=new Student(1,"A",2);
+	    Student s3=new Student(3,"C",1);
+	    
+	    map.put(s1,1);
+	    map.put(s2,2);
+//	    map.put(s3,3);
+	    
+	    System.out.println(map.get(s1));
+	    System.out.println(IntStream.range(0, 100).parallel().findAny());
+	    
+	    List<String> lst1 = Arrays.asList("Jhonny", "David", "Jack", "Duke", "Jill","Dany","Julia","Jenish","Divya");
+	    List<String> lst2 = Arrays.asList("Jhonny", "David", "Jack", "Duke", "Jill","Dany","Julia","Jenish","Divya");
+
+	    Optional<String> findFirst = lst1.parallelStream().filter(s -> s.startsWith("D")).findFirst();
+	    Optional<String> fidnAny = lst2.parallelStream().filter(s -> s.startsWith("J")).findAny();
+
+	    System.out.println(findFirst.get()); //Always print David
+	    System.out.println(fidnAny.get()); //Print Jack/Jill/Julia :behavior of this operation is explicitly nondeterministic
 
 	}
 }
@@ -83,9 +123,28 @@ class Student {
 		this.marks = marks;
 	}
 
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", marks=" + marks + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Student [id=" + id + ", name=" + name + ", marks=" + marks + "]";
+//	}
+//	
+//	@Override
+//	public int hashCode() {
+//		return id;
+//	}
+//	
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Student other = (Student) obj;
+//		if (id != other.id)
+//			return false;
+//		return true;
+//	}
 
 }

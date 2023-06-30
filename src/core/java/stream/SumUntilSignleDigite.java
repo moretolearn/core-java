@@ -36,10 +36,11 @@ public class SumUntilSignleDigite {
 //		{2,3}
 //		{3,5}
 		
+		long  d1 = System.currentTimeMillis();
 		//Given Number is Prime or not
 		boolean noneMatch = IntStream.range(2, 5).noneMatch(n->5%n==0);
 		System.out.println(noneMatch);
-		
+		System.err.println(System.currentTimeMillis()-d1);
 //		IntStream.range(2, 5).forEach(System.out::println);
 		
 		// Given String Palindrome or not
