@@ -1,5 +1,6 @@
 package core.java.stream;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,10 +10,11 @@ import java.util.stream.Stream;
 public class SumUntilSignleDigite {
 	public static void main(String[] args) {
 		
-		int arr[] = { 1, 2, 3, 4, 1 };
+		int arr[] = { 1, 2, 3, 4, 119 };
 		int reduce = Arrays.stream(String.valueOf(Arrays.stream(arr).sum()).split("")).mapToInt(n -> Integer.valueOf(n)).sum();
 		System.err.println(reduce);
-
+//		var<String> k = new ArrayList<>();
+		// Sum of arrya
 		Arrays.stream(arr).boxed().reduce(0, (a, b) -> a + b);
 
 		List<Integer> collect = Stream.iterate(new int[] { 0, 1}, t -> new int[] { t[1], t[0] + t[1] }).limit(5)
