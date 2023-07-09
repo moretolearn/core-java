@@ -45,9 +45,9 @@ public class NthHighestLowestMap {
 
 		System.err.println(collect3);
 
-		List<Entry<String, String>> collect2 = map.entrySet().stream().sorted(Map.Entry.comparingByValue())
+		 List<String> collect2 = map.entrySet().stream().sorted(Map.Entry.comparingByValue()).map(Map.Entry::getKey)
 				.collect(Collectors.toList());
-//		System.err.println(collect2);
+		System.err.println(collect2);
 		
 		Map<String, List<String>> collect4 = map.entrySet().stream()
 		.collect(Collectors.groupingBy(Map.Entry::getKey,
