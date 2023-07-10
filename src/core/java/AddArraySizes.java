@@ -1,4 +1,4 @@
-package core.java.interfaces;
+package core.java;
 
 public class AddArraySizes {
 	public static void main(String[] args) {

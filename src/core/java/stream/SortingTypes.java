@@ -54,10 +54,10 @@ public class SortingTypes {
 		slist.stream().sorted().forEach(n -> {
 			System.out.println(n + " : " + (int) n.charAt(0));
 		});
-		
+
 		// Print Special Characters : "[^A-Za-z0-9]"
-		// Print Numbers            : "[0-9]"
-		// Print Alphabets          : "[a-zA-Z]"
+		// Print Numbers : "[0-9]"
+		// Print Alphabets : "[a-zA-Z]"
 		// Print Lowercase Alphabets: "[a-z]"
 		// Print Uppercase Alphabets: "[A-Z]"
 		List<String> collect3 = slist.stream().sorted().filter(n -> n.matches("[^A-Za-z0-9]"))
