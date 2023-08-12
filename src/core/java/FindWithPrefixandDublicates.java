@@ -18,7 +18,9 @@ public class FindWithPrefixandDublicates {
 		
 		List<String> myList1 = Arrays.asList(" ","2000","apple","12","200"," 15","2 8","-249"," 25","98",".22","-22","32","22","-29"," 21");
 		List<String> myList2 = List.of("apple",""," ","15","98.9","0.0","94.0","98","-0.98","orange","0.98","0099","098","32","98.0","98.019","-1","-98.09");
-		FindWithPrefixandDublicates.findPrefixAndDubplicates1();
+		 String string = myList2.stream().filter(n->n.isEmpty()||n.matches("[0-9]+")).sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
+		System.err.println(string);
+		 //FindWithPrefixandDublicates.findPrefixAndDubplicates1();
 	}
 
 	static void findWithPrefixandDublicates1(List<String> list){
